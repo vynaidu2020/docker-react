@@ -1,0 +1,9 @@
+sudo : required
+services:
+    - docker
+
+before-install:
+    - docker build -t vynaidu2020/docker-react -f Dockerfile_dev .
+
+script:
+    - docker run -e CI=true vynaidu2020/docker-react npm run test -- -- coverage
